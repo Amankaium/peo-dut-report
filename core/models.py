@@ -9,3 +9,10 @@ class ReportDate(models.Model):
     class Meta:
         verbose_name = 'star_date'
         verbose_name_plural = 'end_date'
+
+
+class DriversName(models.Model):
+    full_name = models.CharField(blank=False, max_length=55)
+
+    class Meta:
+        verbose_name = 'Ф.И.О'
