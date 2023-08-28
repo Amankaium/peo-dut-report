@@ -7,6 +7,29 @@ git clone https://github.com/Amankaium/peo-dut-report.git
 # стянуть изменения 
 git pull
 
-# создайте venv и активируйте его
-pip install -r requirements.txt
+# создайте и активируйте venv
+pip install -r requirements.txt 
 python manage.py runserver
+
+# создание и переключение на ветку
+git checkout -b branch-name
+
+# переключение на ветку
+git checkout branch-name
+
+# проверка текущей ветки
+git branch
+git status
+
+# добавления измений на ветке в удалённом репозитории
+git add .
+git commit -m "my message"
+git push --set-upstream origin branch-name
+
+# добавления измений
+git add.
+git commit -m "my message 2"
+git push
+
+# стягивание изменений с определённой ветки
+git pull origin main
