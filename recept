@@ -14,6 +14,8 @@ python manage.py runserver
 # создание и переключение на ветку
 git checkout -b branch-name
 
+# настройка медиа
+
 # проверка текущей ветки
 git branch
 git status
