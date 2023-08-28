@@ -1,0 +1,12 @@
+Рецепт git работа в команда
+
+# в cmd открываете папку с проектами и прописываете команду
+git clone https://github.com/Amankaium/peo-dut-report.git
+# затем открываете код проекта в Pycharm
+
+# стянуть изменения 
+git pull
+
+# создайте venv и активируйте его
+pip install -r requirements.txt
+python manage.py runserver
