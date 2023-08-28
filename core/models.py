@@ -5,7 +5,7 @@ class Name(models.Model):
     id = models.PositiveIntegerField('id', primary_key=True)
     class Meta:
         verbose_name = 'Наименование:'
-        verbose_name_plural = 'Наименование:'
+        verbose_name_plural = 'Наименования:'
 # Create your models here.
 
 class ReportDate(models.Model):
@@ -13,8 +13,8 @@ class ReportDate(models.Model):
     end_date = models.DateTimeField(auto_now_add=True, blank=False)
 
     class Meta:
-        verbose_name = 'star_date'
-        verbose_name_plural = 'end_date'
+        verbose_name = 'date_report'
+        verbose_name_plural = 'date_reports'
 
 
 class DriversName(models.Model):
