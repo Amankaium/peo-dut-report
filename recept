@@ -31,5 +31,5 @@ git add.
 git commit -m "my message 2"
 git push
 
-
-
+# стягивание изменений с определённой ветки
+git pull origin main
