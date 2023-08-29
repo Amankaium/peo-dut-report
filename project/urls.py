@@ -21,5 +21,7 @@ from core.views import *
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transports/', TransportListAPIView.as_view(), name='transports'),
-    path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport')
+    path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport'),
+    path('report', ReportListAPIVew.as_view(), name='reports'),
+    path('report/<int:pk>/', ReportDetailAPIView.as_view(), name='report')
 ]
