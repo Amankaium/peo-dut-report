@@ -3,3 +3,4 @@ from .models import *
 
 admin.site.register(Report)
 admin.site.register(GSM)
+admin.site.register(Transport)
