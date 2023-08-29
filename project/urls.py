@@ -16,9 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from core.views import TransportAPIView
+from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('transport/', TransportAPIView.as_view(), name='transport')
+    path('transports/', TransportListAPIView.as_view(), name='transports'),
+    path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport')
 ]
