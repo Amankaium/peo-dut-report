@@ -23,3 +23,8 @@ class Report(models.Model):
         verbose_name = 'Report'
         verbose_name_plural = 'Reports'
 
+class DriversName(models.Model):
+    full_name = models.CharField(blank=False, max_length=55)
+
+    class Meta:
+        verbose_name = 'Ф.И.О'
