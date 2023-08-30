@@ -2,6 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from .serializers import *
 from .models import *
+
+
 class TransportListAPIView(APIView):
     def get(self, request):
         transports = Transport.objects.all()
@@ -12,7 +14,6 @@ class TransportListAPIView(APIView):
         data = serializer.data
         return Response(data)
 
-
 class TransportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
@@ -20,6 +21,7 @@ class TransportDetailAPIView(APIView):
         serializer = TransportSerializer(instance=transport_object)
         return Response(serializer.data)
 
+      
 class ReportListAPIVew(APIView):
     def get(self, request):
         report = Report.objects.all()
@@ -30,9 +32,36 @@ class ReportListAPIVew(APIView):
         data = serializer.data
         return Response(data)
 
+     
+class DriverListAPIView(APIView):
+    def get(self, request):
+        drivers = DriversName.objects.all()
+        serializer = DriverSerializer(
+            instance=drivers,
+            many=True
+        )
+        data = serializer.data
+        return Response(data)
+
+    
 class ReportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
-        report_object = Report.objects.get(id=id)
-        serializer = ReportSerializer(instance=report_object)
+        report = Report.objects.get(id=id)
+        serializer = ReportSerializer(instance=report)
+        return Response(serializer.data)
+
+
+class FuelStationsListAPIView(APIView):
+    def get(self, request):
+        fuel_stations = GSM.objects.all()
+        serializer = GSMSerializer(instance=fuel_stations, many=True)
+        data = serializer.data
+        return Response(data)
+
+class FuelStationsDetailAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        id = kwargs["pk"]
+        fuel_stations_object = GSM.objects.get(id=id)
+        serializer = GSMSerializer(instance=fuel_stations_object)
         return Response(serializer.data)

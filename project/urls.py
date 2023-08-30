@@ -20,8 +20,16 @@ from core.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+  
     path('transports/', TransportListAPIView.as_view(), name='transports'),
     path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport'),
-    path('report', ReportListAPIVew.as_view(), name='reports'),
-    path('report/<int:pk>/', ReportDetailAPIView.as_view(), name='report')
+
+    path('reports/', ReportListAPIVew.as_view(), name='reports'),
+    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report')
+
+    path('drivers/', DriverListAPIView.as_view(),name='drivers'),
+
+    path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
+    path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
+
 ]
