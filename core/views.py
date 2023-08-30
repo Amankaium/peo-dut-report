@@ -43,6 +43,14 @@ class DriverListAPIView(APIView):
         data = serializer.data
         return Response(data)
 
+class DriverDetailAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        id = kwargs["pk"]
+        report = DriversName.objects.get(id=id)
+        serializer = DriverSerializer(instance=report)
+        return Response(serializer.data)
+
+
     
 class ReportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
