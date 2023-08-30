@@ -5,9 +5,7 @@ admin.site.register(Report)
 admin.site.register(GSM)
 admin.site.register(Transport)
 admin.site.register(DriversName)
-
 admin.site.register(Card)
-
 admin.site.register(OperationType)
 admin.site.register(FuelType)
 

@@ -35,10 +35,12 @@ class OperationTypeSerializer(serializers.ModelSerializer):
         model = OperationType
         fields = '__all__'
 
+
 class CardSerializer(serializers.ModelSerializer):
     class Meta:
         model = Card
         fields = '__all__'
+
 
 
 class FuelTypeSerializer(serializers.ModelSerializer):
