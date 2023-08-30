@@ -34,3 +34,9 @@ class OperationTypeSerializer(serializers.ModelSerializer):
         model = OperationType
         fields = '__all__'
 
+class FuelTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = FuelType
+        fields = '__all__'
+
+

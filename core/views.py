@@ -83,3 +83,7 @@ class OperationTypeListAPIView(ListAPIView):
 class OperationTypeDetailAPIView(RetrieveAPIView):
     queryset = OperationType.objects.all()
     serializer_class = OperationTypeSerializer
+
+class FuelTypeDetailAPIView(RetrieveAPIView):
+    queryset = FuelType.objects.all()
+    serializer_class = FuelTypeSerializer
