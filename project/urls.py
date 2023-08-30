@@ -22,6 +22,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('transports/', TransportListAPIView.as_view(), name='transports'),
     path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport'),
+
+    path('drivers/', DriverListAPIView.as_view(),name='drivers'),
+    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report')
+
     path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
     path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
+
 ]
