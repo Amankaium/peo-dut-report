@@ -19,7 +19,7 @@ git checkout branch-name
 
 # проверка текущей ветки
 git branch
-git status
+git st
 
 # добавления измений на ветке в удалённом репозитории
 git add .
