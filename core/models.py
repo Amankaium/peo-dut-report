@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Transport(models.Model):
     mark = models.CharField(max_length=20)
     number = models.CharField(unique=True, max_length=20)
@@ -7,6 +8,7 @@ class Transport(models.Model):
     class Meta:
         verbose_name = "Транспортное средство"
         verbose_name_plural = "Транспортные средства"
+
 
 class GSM(models.Model):
     name = models.CharField('Наименование', max_length=80, null=True, blank=False)
