@@ -25,7 +25,7 @@ urlpatterns = [
     path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport'),
 
     path('reports/', ReportListAPIVew.as_view(), name='reports'),
-    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report')
+    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
 
     path('drivers/', DriverListAPIView.as_view(),name='drivers'),
 
