@@ -32,7 +32,7 @@ class DriversName(models.Model):
         verbose_name = 'Ф.И.О'
 
 
-class Map(models.Model):
+class Card(models.Model):
     id_realcom = models.PositiveIntegerField(null=False, blank=False)
     number = models.PositiveIntegerField(default=0)
 
