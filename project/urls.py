@@ -28,14 +28,18 @@ urlpatterns = [
     path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
 
     path('drivers/', DriverListAPIView.as_view(),name='drivers'),
-    path('drivers/<int:pk>', DriverDetailAPIView.as_view(),name='driver'),
+    path('drivers/<int:pk>/', DriverDetailAPIView.as_view(),name='driver'),
 
     path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
     path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
+
+
+    path('cards/', CardListAPIView.as_view(),name='cards'), 
 
     path('operation-types/', OperationTypeListAPIView.as_view(), name='operation-types'),
     path('operation-types/<int:pk>/', OperationTypeDetailAPIView.as_view(), name='operation-type'),
 
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
 
+ 
 ]

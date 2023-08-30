@@ -29,6 +29,12 @@ class GSMSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class CardSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Card
+        fields = '__all__'
+
+
 class OperationTypeSerializer(serializers.ModelSerializer):
     class Meta:
         model = OperationType
