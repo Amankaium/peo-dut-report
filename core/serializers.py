@@ -28,3 +28,9 @@ class GSMSerializer(serializers.ModelSerializer):
         model = GSM
         fields = '__all__'
 
+
+class OperationTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = OperationType
+        fields = '__all__'
+

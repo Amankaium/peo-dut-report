@@ -55,3 +55,4 @@ class OperationType(models.Model):
         verbose_name = 'Вид операции'
         verbose_name_plural = 'Виды операции'
 
+
