@@ -30,3 +30,10 @@ class DriversName(models.Model):
 
     class Meta:
         verbose_name = 'Ф.И.О'
+
+class Operation_type(models.Model):
+    id_realcom = models.PositiveIntegerField(null=False, blank=False)
+    name = models.CharField("Вид операции",blank=False,max_length=20)
+    class Meta:
+        verbose_name = 'Вид операции'
+        verbose_name_plural = 'Вид операции'
