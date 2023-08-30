@@ -31,6 +31,16 @@ class DriversName(models.Model):
     class Meta:
         verbose_name = 'Ф.И.О'
 
+
+
+class Card(models.Model):
+    id_realcom = models.PositiveIntegerField(null=False, blank=False)
+    number = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = 'Карта'
+        verbose_name_plural = 'Карты'
+
 class FuelType(models.Model):
     fuel = models.CharField(blank=False, max_length=20)
     id_realcom = models.PositiveIntegerField(null=False, blank=False)
