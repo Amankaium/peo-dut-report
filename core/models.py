@@ -32,6 +32,7 @@ class DriversName(models.Model):
         verbose_name = 'Ф.И.О'
 
 
+
 class Card(models.Model):
     id_realcom = models.PositiveIntegerField(null=False, blank=False)
     number = models.PositiveIntegerField(default=0)
@@ -39,3 +40,18 @@ class Card(models.Model):
     class Meta:
         verbose_name = 'Карта'
         verbose_name_plural = 'Карты'
+
+class FuelType(models.Model):
+    fuel = models.CharField(blank=False, max_length=20)
+    id_realcom = models.PositiveIntegerField(null=False, blank=False)
+    class Meta:
+        verbose_name = 'Вид топлива'
+        verbose_name_plural = 'Виды топлива'
+
+class OperationType(models.Model):
+    id_realcom = models.PositiveIntegerField(null=False, blank=False)
+    name = models.CharField("Вид операции",max_length=20)
+    class Meta:
+        verbose_name = 'Вид операции'
+        verbose_name_plural = 'Виды операции'
+
