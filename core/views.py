@@ -96,3 +96,8 @@ class OperationTypeDetailAPIView(RetrieveAPIView):
     queryset = OperationType.objects.all()
     serializer_class = OperationTypeSerializer
 
+class CardDetailAPIView(RetrieveAPIView):
+    queryset = Card.objects.all()
+    serializer_class = CardSerializer
+
+
