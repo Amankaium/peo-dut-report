@@ -36,4 +36,6 @@ urlpatterns = [
     path('operation-types/', OperationTypeListAPIView.as_view(), name='operation-types'),
     path('operation-types/<int:pk>/', OperationTypeDetailAPIView.as_view(), name='operation-type'),
 
+    path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
+
 ]

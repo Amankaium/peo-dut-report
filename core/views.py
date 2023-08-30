@@ -76,6 +76,11 @@ class FuelStationsDetailAPIView(APIView):
         return Response(serializer.data)
 
 
+class FuelTypeListAPIView(ListAPIView):
+    queryset = FuelType.objects.all()
+    serializer_class = FuelTypeSerializer
+
+
 class OperationTypeListAPIView(ListAPIView):
     queryset = OperationType.objects.all()
     serializer_class = OperationTypeSerializer
