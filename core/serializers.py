@@ -7,6 +7,12 @@ class TransportSerializer(serializers.ModelSerializer):
         model = Transport
         fields = '__all__'
 
+
+class ReportSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Report
+        fields = '__all__'
+
 class DriverSerializer(serializers.ModelSerializer):
     class Meta:
         model = DriversName
@@ -21,3 +27,4 @@ class GSMSerializer(serializers.ModelSerializer):
     class Meta:
         model = GSM
         fields = '__all__'
+

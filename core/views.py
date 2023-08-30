@@ -1,9 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from .models import *
 from .serializers import *
-
-
+from .models import *
 
 
 class TransportListAPIView(APIView):
@@ -23,6 +21,18 @@ class TransportDetailAPIView(APIView):
         serializer = TransportSerializer(instance=transport_object)
         return Response(serializer.data)
 
+      
+class ReportListAPIVew(APIView):
+    def get(self, request):
+        report = Report.objects.all()
+        serializer = ReportSerializer(
+            instance=report,
+            many=True
+        )
+        data = serializer.data
+        return Response(data)
+
+     
 class DriverListAPIView(APIView):
     def get(self, request):
         drivers = DriversName.objects.all()
@@ -32,6 +42,7 @@ class DriverListAPIView(APIView):
         )
         data = serializer.data
         return Response(data)
+
     
 class ReportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
