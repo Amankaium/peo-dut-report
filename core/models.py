@@ -30,3 +30,12 @@ class DriversName(models.Model):
 
     class Meta:
         verbose_name = 'Ф.И.О'
+
+
+class Map(models.Model):
+    id_realcom = models.PositiveIntegerField(null=False, blank=False)
+    number = models.PositiveIntegerField(default=0)
+
+    class Meta:
+        verbose_name = 'Карта'
+        verbose_name_plural = 'Карты'
