@@ -10,7 +10,7 @@ class Transport(models.Model):
         verbose_name_plural = "Транспортные средства"
 
 
-class GSM(models.Model):
+class Station(models.Model):
     name = models.CharField('Наименование', max_length=80, null=True, blank=False)
     id_realcom = models.PositiveIntegerField(null=False, blank=False)
     class Meta:

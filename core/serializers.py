@@ -23,9 +23,9 @@ class ReportSerializer(serializers.ModelSerializer):
         model = Report
         fields = '__all__'
 
-class GSMSerializer(serializers.ModelSerializer):
+class StationSerializer(serializers.ModelSerializer):
     class Meta:
-        model = GSM
+        model = Station
         fields = '__all__'
 
 

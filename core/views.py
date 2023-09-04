@@ -99,16 +99,16 @@ class ReportCreateAPIVew(CreateAPIView):
 
 class FuelStationsListAPIView(APIView):
     def get(self, request):
-        fuel_stations = GSM.objects.all()
-        serializer = GSMSerializer(instance=fuel_stations, many=True)
+        fuel_stations = Station.objects.all()
+        serializer = StationSerializer(instance=fuel_stations, many=True)
         data = serializer.data
         return Response(data)
 
 class FuelStationsDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
-        fuel_stations_object = GSM.objects.get(id=id)
-        serializer = GSMSerializer(instance=fuel_stations_object)
+        fuel_stations_object = Station.objects.get(id=id)
+        serializer = StationSerializer(instance=fuel_stations_object)
         return Response(serializer.data)
 
 
