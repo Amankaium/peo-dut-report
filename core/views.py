@@ -1,7 +1,9 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
 
-from rest_framework.generics import ListAPIView, RetrieveAPIView
+from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
+
+from rest_framework import generics
 
 from .serializers import *
 from .models import *
@@ -24,6 +26,23 @@ class TransportDetailAPIView(APIView):
         serializer = TransportSerializer(instance=transport_object)
         return Response(serializer.data)
 
+
+class TransportCreateAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = TransportSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                data={"message": "Успешно создано"},
+                status=201,
+            )
+        
+        return Response(
+            data=serializer.errors,
+            status=400
+        )
+
       
 class ReportListAPIVew(APIView):
     def get(self, request):
@@ -36,7 +55,7 @@ class ReportListAPIVew(APIView):
         return Response(data)
 
      
-class DriverListAPIView(APIView):
+class DriverListCreateAPIView(APIView):
     def get(self, request):
         drivers = DriversName.objects.all()
         serializer = DriverSerializer(
@@ -45,6 +64,16 @@ class DriverListAPIView(APIView):
         )
         data = serializer.data
         return Response(data)
+    
+    def post(self, request):
+        serializer = DriverSerializer(data=request.data)
+        if serializer.is_valid():
+            new_driver = serializer.save()
+            new_serializer = DriverSerializer(instance=new_driver)
+            return Response(new_serializer.data, 201)
+        
+        return Response(serializer.errors, 400)
+
 
 class DriverDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
@@ -63,6 +92,11 @@ class ReportDetailAPIView(APIView):
         return Response(serializer.data)
 
 
+class ReportCreateAPIVew(CreateAPIView):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
+
+
 class FuelStationsListAPIView(APIView):
     def get(self, request):
         fuel_stations = GSM.objects.all()
@@ -78,7 +112,7 @@ class FuelStationsDetailAPIView(APIView):
         return Response(serializer.data)
 
 
-class CardListAPIView(ListAPIView):
+class CardListCreateAPIView(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
