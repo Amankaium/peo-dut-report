@@ -122,7 +122,7 @@ class FuelTypeListAPIView(ListAPIView):
     serializer_class = FuelTypeSerializer
 
 
-class OperationTypeListAPIView(ListAPIView):
+class OperationCreateTypeListAPIView(generics.ListCreateAPIView):
     queryset = OperationType.objects.all()
     serializer_class = OperationTypeSerializer
 
