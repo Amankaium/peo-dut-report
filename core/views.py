@@ -19,6 +19,7 @@ class TransportListAPIView(APIView):
         data = serializer.data
         return Response(data)
 
+
 class TransportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
@@ -83,7 +84,6 @@ class DriverDetailAPIView(APIView):
         return Response(serializer.data)
 
 
-    
 class ReportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
@@ -104,12 +104,24 @@ class FuelStationsListAPIView(APIView):
         data = serializer.data
         return Response(data)
 
+
 class FuelStationsDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
         fuel_stations_object = Station.objects.get(id=id)
         serializer = StationSerializer(instance=fuel_stations_object)
         return Response(serializer.data)
+
+
+class StationCreateAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = StationSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(data={"message": "Успешно создано"}, status=201)
+
+        return Response(data=serializer.errors, status=400)
 
 
 class CardListCreateAPIView(generics.ListCreateAPIView):
@@ -126,6 +138,7 @@ class OperationTypeListAPIView(ListAPIView):
     queryset = OperationType.objects.all()
     serializer_class = OperationTypeSerializer
 
+
 class OperationTypeDetailAPIView(RetrieveAPIView):
     queryset = OperationType.objects.all()
     serializer_class = OperationTypeSerializer
@@ -134,6 +147,7 @@ class OperationTypeDetailAPIView(RetrieveAPIView):
 class FuelTypeDetailAPIView(RetrieveAPIView):
     queryset = FuelType.objects.all()
     serializer_class = FuelTypeSerializer
+
 
 class CardDetailAPIView(RetrieveAPIView):
     queryset = Card.objects.all()

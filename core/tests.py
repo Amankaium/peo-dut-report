@@ -1,5 +1,5 @@
 from rest_framework.test import APITestCase
-from .models import Transport
+from .models import Transport, Station
 
 
 class TransportAPITestCase(APITestCase):
@@ -45,7 +45,7 @@ class TransportCreateAPITestCase(APITestCase):
 
     def test_post_data_should_success(self):
         data = {
-            "mark": "reated mark",
+            "mark": "сreated mark",
             "number": "created number",
             "trailer": "created trailer"
         }
@@ -60,4 +60,10 @@ class TransportCreateAPITestCase(APITestCase):
         new_transport = Transport.objects.get(mark=data["mark"])
         self.assertEqual(data["number"], new_transport.number)
         self.assertEqual(data["trailer"], new_transport.trailer)
+
+
+
+
+
+
 
