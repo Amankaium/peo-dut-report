@@ -30,23 +30,22 @@ urlpatterns = [
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
     # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
 
-    path('drivers/', DriverListCreateAPIView.as_view(),name='drivers'),
-    path('drivers/<int:pk>/', DriverDetailAPIView.as_view(),name='driver'),
+    path('drivers/', DriverListCreateAPIView.as_view(), name='drivers'),
+    path('drivers/<int:pk>/', DriverDetailAPIView.as_view(), name='driver'),
 
     path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
     path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
 
 
-    path('cards/', CardListCreateAPIView.as_view(),name='cards'), 
+    path('cards/', CardListCreateAPIView.as_view(), name='cards'),
+    path('cards/<int:pk>/', CardDetailAPIView.as_view(), name='card'),
 
     path('operation-types/', OperationTypeListAPIView.as_view(), name='operation-types'),
     path('operation-types/<int:pk>/', OperationTypeDetailAPIView.as_view(), name='operation-type'),
 
+    path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
     path('fuel-types-detail/<int:pk>/', FuelTypeDetailAPIView.as_view(), name='fuel-types'),
 
 
-    path('cards/<int:pk>/', CardDetailAPIView.as_view(), name='card'),
-
-    path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
 
 ]

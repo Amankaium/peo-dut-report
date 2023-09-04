@@ -28,10 +28,10 @@ class TransportDetailAPIView(APIView):
 
 
 class TransportCreateAPIView(APIView):
-    def post(self, request, *args, **kwargs):
-        data = request.data
+    def post(self, request, *args, **kwargs):   # def get and post - методы
+        data = request.data       # данные считываются с request.data ( это словарь)
         serializer = TransportSerializer(data=data)
-        if serializer.is_valid():
+        if serializer.is_valid():  # если сериалезатор валидный, то сохрани и верни
             serializer.save()
             return Response(
                 data={"message": "Успешно создано"},
