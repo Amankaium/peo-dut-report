@@ -19,11 +19,11 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from core.views import *
 
-
 user_router = DefaultRouter()
 user_router.register(r'users', UserViewSet, basename='user')
 
-
+driversname_router = DefaultRouter()
+driversname_router.register(r'driversname', DriverViewSet, basename='driversname')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -48,4 +48,5 @@ urlpatterns = [
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
     path('api/', include(user_router.urls)),
+    path('api/', include(driversname_router.urls)),
 ]
