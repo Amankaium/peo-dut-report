@@ -9,3 +9,4 @@ admin.site.register(Card)
 admin.site.register(OperationType)
 admin.site.register(FuelType)
 admin.site.register(CardOperation)
+

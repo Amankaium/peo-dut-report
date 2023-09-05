@@ -124,6 +124,11 @@ class StationCreateAPIView(APIView):
         return Response(data=serializer.errors, status=400)
 
 
+class StationListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Station.objects.all()
+    serializer_class = StationSerializer
+
+
 class CardListCreateAPIView(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer

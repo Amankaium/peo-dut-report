@@ -15,39 +15,41 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from core.views import *
 
+
+user_router = DefaultRouter()
+user_router.register(r'users', UserViewSet, basename='user')
+
+
+
 urlpatterns = [
+
     path('admin/', admin.site.urls),
-  
     path('transports/', TransportListAPIView.as_view(), name='transports'),
     path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport'),
-    path('transports-create/', TransportCreateAPIView.as_view(), name='transport-create'), 
-
+    path('transports-create/', TransportCreateAPIView.as_view(), name='transport-create'),
     path('reports/', ReportListAPIVew.as_view(), name='reports'),
-    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
-    # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
-
+    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
+    path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
+    path('report-delete/<int:pk>/', ReportDeleteAPIVew.as_view(), name='report-delete'),
+    path('report-generic/<int:pk>/', ReportAPIVew.as_view(), name='report-gen'),
     path('drivers/', DriverListCreateAPIView.as_view(),name='drivers'),
     path('drivers/<int:pk>/', DriverDetailAPIView.as_view(),name='driver'),
-
     path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
     path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
-
-    path('stations-create/', StationCreateAPIView.as_view(), name='station-create'),
-
-    path('cards/', CardListCreateAPIView.as_view(),name='cards'),
-
-    path('operation-types/', OperationTypeListAPIView.as_view(), name='operation-types'),
+    path('cards/', CardListCreateAPIView.as_view(), name='cards'),
+    path('cards/', CardListCreateAPIView.as_view(), name='cards'),
+    path('operation-types/', OperationCreateTypeListAPIView.as_view(), name='operation-types'),
     path('operation-types/<int:pk>/', OperationTypeDetailAPIView.as_view(), name='operation-type'),
-
     path('fuel-types-detail/<int:pk>/', FuelTypeDetailAPIView.as_view(), name='fuel-types'),
-
-
     path('cards/<int:pk>/', CardDetailAPIView.as_view(), name='card'),
-
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
-
+    path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
+    path('stations/', StationListCreateAPIView.as_view(), name='stations/'),
+    path('stations-create/', StationCreateAPIView.as_view(), name='stations-create/'),
+    path('api/', include(user_router.urls)),
 ]
