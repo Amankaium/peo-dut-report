@@ -23,6 +23,9 @@ from core.views import *
 user_router = DefaultRouter()
 user_router.register(r'users', UserViewSet, basename='user')
 
+transport_router = DefaultRouter()
+transport_router.register('transports', TransportViewSet, basename='transport')
+
 
 
 urlpatterns = [
@@ -48,4 +51,5 @@ urlpatterns = [
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
     path('api/', include(user_router.urls)),
+    path('api/', include(transport_router.urls)),
 ]
