@@ -27,7 +27,7 @@ urlpatterns = [
     path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
     # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
-    path('drivers/', DriverListCreateAPIView.as_view(),name='drivers'),
+    path('drivers/', DriverListCreateAPIView.as_view(), name='drivers'),
     path('drivers/<int:pk>/', DriverDetailAPIView.as_view(),name='driver'),
     path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
     path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
@@ -38,5 +38,4 @@ urlpatterns = [
     path('cards/<int:pk>/', CardDetailAPIView.as_view(), name='card'),
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/')
-
 ]
