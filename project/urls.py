@@ -15,8 +15,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from rest_framework.routers import DefaultRouter
 from core.views import *
+
+
+user_router = DefaultRouter()
+user_router.register(r'users', UserViewSet, basename='user')
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -24,10 +31,14 @@ urlpatterns = [
     path('transports/<int:pk>/', TransportDetailAPIView.as_view(), name='transport'),
     path('transports-create/', TransportCreateAPIView.as_view(), name='transport-create'),
     path('reports/', ReportListAPIVew.as_view(), name='reports'),
-    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
     # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
     path('drivers/', DriverListCreateAPIView.as_view(), name='drivers'),
+    path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
+    path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
+    path('report-delete/<int:pk>/', ReportDeleteAPIVew.as_view(), name='report-delete'),
+    path('report-generic/<int:pk>/', ReportAPIVew.as_view(), name='report-gen'),
+    path('drivers/', DriverListCreateAPIView.as_view(),name='drivers'),
     path('drivers/<int:pk>/', DriverDetailAPIView.as_view(),name='driver'),
     path('fuel_stations/', FuelStationsListAPIView.as_view(), name='fuel_stations'),
     path('fuel_stations/<int:pk>/', FuelStationsDetailAPIView.as_view(), name='fuel_station'),
@@ -37,5 +48,7 @@ urlpatterns = [
     path('fuel-types-detail/<int:pk>/', FuelTypeDetailAPIView.as_view(), name='fuel-types'),
     path('cards/<int:pk>/', CardDetailAPIView.as_view(), name='card'),
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
-    path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/')
+    path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
+    path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
+    path('api/', include(user_router.urls)),
 ]

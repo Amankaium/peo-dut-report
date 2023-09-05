@@ -5,3 +5,4 @@ from .fuelstation import *
 from .operation import *
 from .report import *
 from .transport import *
+from .user import *
