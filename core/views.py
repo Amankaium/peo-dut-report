@@ -139,4 +139,18 @@ class CardDetailAPIView(RetrieveAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
 
+class FuelTypeCreateAPIView(CreateAPIView):
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        serializer = FuelTypeSerializer(data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(
+                data={"message": "Успешно создано"},
+                status=201,
+            )
 
+        return Response(
+            data=serializer.errors,
+            status=400
+        )
