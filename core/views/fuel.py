@@ -9,6 +9,12 @@ class FuelTypeListAPIView(ListAPIView):
     queryset = FuelType.objects.all()
     serializer_class = FuelTypeSerializer
 
+
+class FuelTypeCreateAPIView(generics.ListCreateAPIView):
+    queryset = FuelType.objects.all()
+    serializer_class = FuelTypeSerializer
+
+
 class FuelTypeDetailAPIView(RetrieveAPIView):
     queryset = FuelType.objects.all()
     serializer_class = FuelTypeSerializer

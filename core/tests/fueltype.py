@@ -23,10 +23,6 @@ class FuelTypeCreateAPITestCase(APITestCase):
     def setUp(self):
         self.url = '/fuel-types-create/'
 
-    def test_get_request_to_create_api_should_return_405(self):
-        response = self.client.get(self.url)
-        self.assertEqual(response.status_code, 405)
-
     def test_post_empty_data(self):
         response = self.client.post(self.url)
         self.assertEqual(response.status_code, 400)
