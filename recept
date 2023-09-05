@@ -10,7 +10,7 @@ git pull
 # создайте и активируйте venv
 pip install -r requirements.txt 
 python manage.py runserver
-
+-
 # создание и переключение на ветку
 git checkout -b branch-name
 
