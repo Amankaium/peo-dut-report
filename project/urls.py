@@ -19,11 +19,8 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from core.views import *
 
-
-
 user_router = DefaultRouter()
 user_router.register(r'users', UserViewSet, basename='user')
-
 
 station_router = DefaultRouter()
 station_router.register(r'stations', StationViewSet, basename='station')
@@ -33,8 +30,6 @@ driversname_router.register(r'driversname', DriverViewSet, basename='driversname
 
 transport_router = DefaultRouter()
 transport_router.register('transports', TransportViewSet, basename='transport')
-
-
 
 urlpatterns = [
     path('admin/', admin.site.urls),

@@ -2,6 +2,7 @@ from rest_framework.test import APITestCase
 from core.models import *
 
 
+
 class DriverAPITestCase(APITestCase):
     def setUp(self):
         DriversName.objects.create(full_name='test 1')
