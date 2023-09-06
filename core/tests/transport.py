@@ -1,21 +1,13 @@
 from rest_framework.test import APITestCase
 from core.models import *
+from .factories import TransportFactory
 
 
 
 class TransportAPITestCase(APITestCase):
     def setUp(self):
-        Transport.objects.create(
-            mark='test mark 1',
-            number='test number 1',
-            trailer='test trailer 1'
-        )
-
-        Transport.objects.create(
-            mark='test mark 2',
-            number='test number 2',
-            trailer='test trailer 2'
-        )
+        transport_object_1 = TransportFactory()
+        transport_object_2 = TransportFactory()
 
     def test_get_transport_list_should_success(self):
         response = self.client.get("/transports/")
