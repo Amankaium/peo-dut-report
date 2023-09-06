@@ -31,6 +31,9 @@ driversname_router.register(r'driversname', DriverViewSet, basename='driversname
 transport_router = DefaultRouter()
 transport_router.register('transports', TransportViewSet, basename='transport')
 
+card_operation_router = DefaultRouter()
+card_operation_router.register('card-operation', CardOperationViewSet, basename='card_operation')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transports/', TransportListAPIView.as_view(), name='transports'),
@@ -38,7 +41,7 @@ urlpatterns = [
     path('transports-create/', TransportCreateAPIView.as_view(), name='transport-create'),
     path('reports/', ReportListAPIVew.as_view(), name='reports'),
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
-    # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
+    path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
     path('drivers/', DriverListCreateAPIView.as_view(), name='drivers'),
     path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
     path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
@@ -60,4 +63,5 @@ urlpatterns = [
     path('api/', include(station_router.urls)),
     path('api/', include(driversname_router.urls)),
     path('api/', include(transport_router.urls)),
+    path('api/', include(card_operation_router.urls)),
 ]
