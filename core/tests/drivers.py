@@ -3,6 +3,7 @@ from core.models import *
 from .factories import DriversNameFactory
 import factory
 
+
 class DriverAPITestCase(APITestCase):
     def setUp(self):
         DriversName_object_1 = DriversNameFactory()

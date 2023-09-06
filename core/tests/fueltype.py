@@ -1,11 +1,13 @@
 from rest_framework.test import APITestCase
 from core.models import *
-
+from .factories import FuelTypeFactory
 
 class FuelTypeAPITestCase(APITestCase):
     def setUp(self):
-        FuelType.objects.create(fuel='test 1', id_realcom=1)
-        FuelType.objects.create(fuel='test 2', id_realcom=2)
+        fueltype_object_1 = FuelTypeFactory()
+        fueltype_object_2 = FuelTypeFactory()
+
+
     def test_get_fuel_list_should_success(self):
         response = self.client.get("/fuel-types/")
         assert response.status_code == 200
