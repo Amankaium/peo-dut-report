@@ -25,6 +25,10 @@ user_router.register(r'users', UserViewSet, basename='user')
 driversname_router = DefaultRouter()
 driversname_router.register(r'driversname', DriverViewSet, basename='driversname')
 
+transport_router = DefaultRouter()
+transport_router.register('transports', TransportViewSet, basename='transport')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transports/', TransportListAPIView.as_view(), name='transports'),
@@ -49,4 +53,5 @@ urlpatterns = [
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
     path('api/', include(user_router.urls)),
     path('api/', include(driversname_router.urls)),
+    path('api/', include(transport_router.urls)),
 ]
