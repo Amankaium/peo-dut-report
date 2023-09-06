@@ -51,4 +51,5 @@ urlpatterns = [
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
     path('api/', include(user_router.urls)),
+    path('api/', include(station_router.urls)),
 ]
