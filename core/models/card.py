@@ -8,3 +8,6 @@ class Card(models.Model):
     class Meta:
         verbose_name = 'Карта'
         verbose_name_plural = 'Карты'
+    
+    def __str__(self):
+        return str(self.number)

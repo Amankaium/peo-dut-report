@@ -9,3 +9,18 @@ admin.site.register(Card)
 admin.site.register(OperationType)
 admin.site.register(FuelType)
 
+@admin.register(CardOperation)
+class CardOperationAdmin(admin.ModelAdmin):
+    list_display = [
+        'date',
+        'station',
+        'card',
+        'fuel_type',
+        'operation_type',
+        'balance_before',
+        'balance_after',
+        'dose',
+        'price_som',
+        'sum_som',
+    ]    
+
