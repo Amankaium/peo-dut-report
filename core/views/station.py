@@ -1,5 +1,5 @@
 from rest_framework.viewsets import ModelViewSet
-from django.contrib.auth.models import Station
+from core.models import Station
 from core.serializers import *
 
 

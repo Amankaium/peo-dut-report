@@ -20,8 +20,19 @@ from rest_framework.routers import DefaultRouter
 from core.views import *
 
 
+
 user_router = DefaultRouter()
 user_router.register(r'users', UserViewSet, basename='user')
+
+
+station_router = DefaultRouter()
+station_router.register(r'stations', StationViewSet, basename='station')
+
+driversname_router = DefaultRouter()
+driversname_router.register(r'driversname', DriverViewSet, basename='driversname')
+
+transport_router = DefaultRouter()
+transport_router.register('transports', TransportViewSet, basename='transport')
 
 
 
@@ -52,4 +63,7 @@ urlpatterns = [
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
     path('api/', include(user_router.urls)),
     path('api/', include(station_router.urls)),
+    path('api/', include(user_router.urls)),
+    path('api/', include(driversname_router.urls)),
+    path('api/', include(transport_router.urls)),
 ]
