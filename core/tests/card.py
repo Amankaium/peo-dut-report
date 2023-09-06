@@ -1,18 +1,14 @@
 from rest_framework.test import APITestCase
-from core.models import Card
+from core.models import *
+from .factories import CardFactory
 
 
 class CardAPITestCase(APITestCase):
     def setUp(self):
-        Card.objects.create(
-            id_realcom='11',
-            number='11'
-        )
+        card_object_1 = CardFactory()
+        card_object_2 = CardFactory()
 
-        Card.objects.create(
-            id_realcom='22',
-            number='22'
-        )
+
 
     def test_get_card_list_should_success(self):
         response = self.client.get("/cards/")
