@@ -19,14 +19,21 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from core.views import *
 
+
+
 user_router = DefaultRouter()
 user_router.register(r'users', UserViewSet, basename='user')
+
+
+station_router = DefaultRouter()
+station_router.register(r'stations', StationViewSet, basename='station')
 
 driversname_router = DefaultRouter()
 driversname_router.register(r'driversname', DriverViewSet, basename='driversname')
 
 transport_router = DefaultRouter()
 transport_router.register('transports', TransportViewSet, basename='transport')
+
 
 
 urlpatterns = [
@@ -36,6 +43,8 @@ urlpatterns = [
     path('transports-create/', TransportCreateAPIView.as_view(), name='transport-create'),
     path('reports/', ReportListAPIVew.as_view(), name='reports'),
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
+    # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
+    path('drivers/', DriverListCreateAPIView.as_view(), name='drivers'),
     path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
     path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
     path('report-delete/<int:pk>/', ReportDeleteAPIVew.as_view(), name='report-delete'),
@@ -51,6 +60,9 @@ urlpatterns = [
     path('cards/<int:pk>/', CardDetailAPIView.as_view(), name='card'),
     path('fuel-types/', FuelTypeListAPIView.as_view(), name='fuel-types'),
     path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
+    path('fuel-types-create/', FuelTypeCreateAPIView.as_view(), name='fuel-types-create/'),
+    path('api/', include(user_router.urls)),
+    path('api/', include(station_router.urls)),
     path('api/', include(user_router.urls)),
     path('api/', include(driversname_router.urls)),
     path('api/', include(transport_router.urls)),
