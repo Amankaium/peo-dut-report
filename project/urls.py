@@ -31,6 +31,10 @@ driversname_router.register(r'driversname', DriverViewSet, basename='driversname
 transport_router = DefaultRouter()
 transport_router.register('transports', TransportViewSet, basename='transport')
 
+report_router = DefaultRouter()
+report_router.register('reports', ReportViewSet, basename='report')
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transports/', TransportListAPIView.as_view(), name='transports'),
@@ -60,4 +64,5 @@ urlpatterns = [
     path('api/', include(station_router.urls)),
     path('api/', include(driversname_router.urls)),
     path('api/', include(transport_router.urls)),
+    path('api/', include(report_router.urls)),
 ]

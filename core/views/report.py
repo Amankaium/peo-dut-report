@@ -1,5 +1,6 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework import generics
 from core.models import *
@@ -27,6 +28,7 @@ class ReportDeleteAPIVew(APIView):
         report_object.delete()
         return Response("Successfully deleted", 204)
 
+
 class ReportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
         id = kwargs["pk"]
@@ -49,4 +51,9 @@ class ReportListAPIVew(ListAPIView):
         )
         data = serializer.data
         return Response(data)
+
+
+class ReportViewSet(ModelViewSet):
+    queryset = Report.objects.all()
+    serializer_class = ReportSerializer
 
