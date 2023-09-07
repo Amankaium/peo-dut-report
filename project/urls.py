@@ -31,6 +31,12 @@ driversname_router.register(r'driversname', DriverViewSet, basename='driversname
 transport_router = DefaultRouter()
 transport_router.register('transports', TransportViewSet, basename='transport')
 
+report_router = DefaultRouter()
+report_router.register('reports', ReportViewSet, basename='report')
+
+operation_router = DefaultRouter()
+operation_router.register(r'operation-types', OperationTypeViewSet, basename='operation-type')
+
 card_operation_router = DefaultRouter()
 card_operation_router.register('card-operation', CardOperationViewSet, basename='card_operation')
 
@@ -63,5 +69,7 @@ urlpatterns = [
     path('api/', include(station_router.urls)),
     path('api/', include(driversname_router.urls)),
     path('api/', include(transport_router.urls)),
+    path('api/', include(report_router.urls)),
+    path('api/', include(operation_router.urls)),
     path('api/', include(card_operation_router.urls)),
 ]
