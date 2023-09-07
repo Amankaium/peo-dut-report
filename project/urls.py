@@ -37,6 +37,8 @@ report_router.register('reports', ReportViewSet, basename='report')
 operation_router = DefaultRouter()
 operation_router.register(r'operation-types', OperationTypeViewSet, basename='operation-type')
 
+card_operation_router = DefaultRouter()
+card_operation_router.register('card-operations', CardOperationViewSet, basename='card_operation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -45,7 +47,7 @@ urlpatterns = [
     path('transports-create/', TransportCreateAPIView.as_view(), name='transport-create'),
     path('reports/', ReportListAPIVew.as_view(), name='reports'),
     path('report-create/', ReportCreateAPIVew.as_view(), name='report-create'),
-    # path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
+    path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
     path('drivers/', DriverListCreateAPIView.as_view(), name='drivers'),
     path('reports/<int:pk>/', ReportDetailAPIView.as_view(), name='report'),
     path('report-update/<int:pk>/', ReportUpdateAPIVew.as_view(), name='report-update'),
@@ -69,4 +71,5 @@ urlpatterns = [
     path('api/', include(transport_router.urls)),
     path('api/', include(report_router.urls)),
     path('api/', include(operation_router.urls)),
+    path('api/', include(card_operation_router.urls)),
 ]
