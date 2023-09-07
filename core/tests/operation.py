@@ -1,17 +1,10 @@
 from rest_framework.test import APITestCase
 from core.models import OperationType
-
+from .factories import OperationTypeFactory
 class OperationTypeAPITestCase(APITestCase):
     def setUp(self):
-        OperationType.objects.create(
-            id_realcom=1,
-            name='test name 1',
-        )
-
-        OperationType.objects.create(
-            id_realcom=2,
-            name='test name 2',
-        )
+        operation_object_1 = OperationTypeFactory()
+        operation_object_2 = OperationTypeFactory()
 
     def get_operation_types_list_should_success(self):
         response = self.client.get('operation-types/')

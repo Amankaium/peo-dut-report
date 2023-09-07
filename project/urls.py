@@ -34,6 +34,9 @@ transport_router.register('transports', TransportViewSet, basename='transport')
 report_router = DefaultRouter()
 report_router.register('reports', ReportViewSet, basename='report')
 
+operation_router = DefaultRouter()
+operation_router.register(r'operation-types', OperationTypeViewSet, basename='operation-type')
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -65,4 +68,5 @@ urlpatterns = [
     path('api/', include(driversname_router.urls)),
     path('api/', include(transport_router.urls)),
     path('api/', include(report_router.urls)),
+    path('api/', include(operation_router.urls)),
 ]
