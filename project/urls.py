@@ -38,7 +38,7 @@ operation_router = DefaultRouter()
 operation_router.register(r'operation-types', OperationTypeViewSet, basename='operation-type')
 
 card_operation_router = DefaultRouter()
-card_operation_router.register('card-operation', CardOperationViewSet, basename='card_operation')
+card_operation_router.register('card-operations', CardOperationViewSet, basename='card_operation')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
