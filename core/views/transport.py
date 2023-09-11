@@ -5,6 +5,16 @@ from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework import generics
 from ..models import *
 from ..serializers import *
+from core.models import *
+from django.views import View
+from django.shortcuts import render
+
+class TransportListView(View):
+    def get(self,request, *args, **kwargs):
+        id = kwargs["pk"]
+        context = {}
+        context['transport'] = Transport.objects.get(id=id)
+        return render(request, 'core/transports.html', context)
 
 class TransportViewSet(ModelViewSet):
     queryset = Transport.objects.all()
