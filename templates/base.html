@@ -7,6 +7,12 @@
     <title>ПЭО Дут Отчёт</title>
 </head>
 <body>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="{% url 'drivers-list' %}">Водители</a> |
+        <a href="{% url 'transports-list' %}">Машины</a> |
+        <a href="{% url 'cards-list' %}">Карты</a>
+    </nav>
     {% block content %}
 
     {% endblock %}
