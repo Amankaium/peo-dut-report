@@ -1,3 +1,5 @@
+from django.views import View
+from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
@@ -12,3 +14,10 @@ class CardListCreateAPIView(generics.ListCreateAPIView):
 class CardDetailAPIView(RetrieveAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
+
+
+class CardListView(View):
+    def get(self, request):
+        context = {}
+        context["cards"] = Card.objects.all()
+        return render(request, 'core/cards.html', context)
