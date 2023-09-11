@@ -2,9 +2,19 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework import generics
-from core.models import *
 from rest_framework.viewsets import ModelViewSet
 from core.serializers import *
+from django.views import View
+from django.shortcuts import render
+from core.models import *
+
+
+class GetDriversListView(View):
+    def get(self, request):
+        context = {}
+        context['drivers'] = DriversName.objects.all()
+        return render(request, 'core/get_drivers.html', context)
+
 
 class DriverViewSet(ModelViewSet):
     queryset = DriversName.objects.all()
