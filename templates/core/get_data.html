@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Получить данные по API</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <button>Получить</button>
+    </form>
+    {% if data %}
+        <div>
+            {{ data }}
+        </div>
+    {% endif %}
+{% endblock %}
