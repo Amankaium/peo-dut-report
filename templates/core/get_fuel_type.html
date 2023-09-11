@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Получить список видов топлива</h1>
+
+    {% for fuel_type in fuel_types %}
+        <div>
+            {{ fuel_type.fuel }}
+        </div>
+    {% endfor %}
+{% endblock %}
