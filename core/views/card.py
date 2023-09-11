@@ -21,3 +21,6 @@ class CardListView(View):
         context = {}
         context["cards"] = Card.objects.all()
         return render(request, 'core/cards.html', context)
+
+
+
