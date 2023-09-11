@@ -72,5 +72,6 @@ urlpatterns = [
     path('api/', include(report_router.urls)),
     path('api/', include(operation_router.urls)),
     path('api/', include(card_operation_router.urls)),
-    path('', include('core.urls'))
+    path('', include('core.urls')),
+
 ]

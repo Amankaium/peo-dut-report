@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Получить список транспорта</h1>
+
+    {% for transport in transports %}
+        <div>
+            {{ transport.number }}
+        </div>
+    {% endfor %}
+{% endblock %}
