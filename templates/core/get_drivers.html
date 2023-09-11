@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Получить данные водителей</h1>
+    {% for driver in drivers %}
+    <div>
+        {{ driver.full_name }}
+    </div>
+{% endfor %}
+{% endblock %}
