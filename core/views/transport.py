@@ -3,11 +3,11 @@ from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework import generics
-from ..models import *
-from ..serializers import *
-from core.models import *
+from core.serializers import *
+from django.shortcuts import render
 from django.views import View
 from django.shortcuts import render
+from core.models import *
 
 class TransportListView(View):
     def get(self,request, *args, **kwargs):
@@ -15,6 +15,15 @@ class TransportListView(View):
         context = {}
         context['transport'] = Transport.objects.get(id=id)
         return render(request, 'core/transports.html', context)
+      
+
+
+class GetTransportView(View):
+    template_name = 'core/get_transports.html'
+    def get(self, request):
+        context = {}
+        context['transports'] = Transport.objects.all()
+        return render(request, self.template_name, context)
 
 class TransportViewSet(ModelViewSet):
     queryset = Transport.objects.all()

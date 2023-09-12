@@ -5,8 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПЭО Дут Отчёт</title>
+
 </head>
 <body>
+    <nav>
+        <a href="/">Главная</a> |
+        <a href="{% url 'drivers-list' %}">Водители</a> |
+        <a href="{% url 'transports-list' %}">Машины</a> |
+        <a href="{% url 'cards-list' %}">Карты</a>
+    </nav>
+  
     {% block content %}
 
     {% endblock %}
