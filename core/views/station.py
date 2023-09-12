@@ -13,20 +13,21 @@ class StationAddView(View):
 
     def post(self, request):
         excel_file = request.FILES["excel_file"]
+
         new_excel_source = ExcelSource.objects.create(
             excel_file=excel_file,
             created_by=request.user
         )
         messages.success(request, "Файл добавлен")
         context = {}
-        excel_file_source = load_workbook(new_excel_source.excel_file.url[1:])
+        excel_file_source = load_workbook('media/' + new_excel_source.excel_file.name)
         page = excel_file_source[excel_file_source.sheetnames[0]]
         created_qty = 0
         for row in page:
             if row[0].row == 1:
                 continue
             name = row[0].value
-            new_station, created = Station.objects.get_or_create(name=name)
+            new_station, created = Station.objects.get_or_create(name=name, id_realcom=2)
             if created:
                 created_qty += 1
         messages.success(request, f"Добавлено {created_qty} AЗС")
