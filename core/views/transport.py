@@ -8,6 +8,29 @@ from django.shortcuts import render
 from django.views import View
 from django.shortcuts import render
 from core.models import *
+from openpyxl import load_workbook
+from django.contrib import messages
+
+class TransportAddView(View):
+    def get(self, request):
+        return render(request, 'core/transport_add.html')
+    def post(self, request):
+        excel_file = request.FILES['excel_file']
+        new_excel_source = ExcelSource.objects.create(excel_file=excel_file, created_by=request.user)
+        messages.success(request, "Файл добавлен")
+        context = {}
+        excel_file_source = load_workbook(new_excel_source.excel_file.url[1:])
+        page = excel_file_source[excel_file_source.sheetnames[0]]
+        created_qty = 0
+        for row in page:
+            if row[0].row == 1:
+                continue
+            name_realcom = row[2].value
+            new_transport, created = Transport.objects.get_or_create(name_realcom=name_realcom)
+            if created:
+                created_qty += 1
+        messages.success(request, f'Добавлено {created_qty} транспортов')
+        return render(request, 'core/transport_add.html', context)
 
 class TransportInfoView(View):
     def get(self,request, *args, **kwargs):
