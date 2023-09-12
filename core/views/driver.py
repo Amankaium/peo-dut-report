@@ -6,7 +6,44 @@ from rest_framework.viewsets import ModelViewSet
 from core.serializers import *
 from django.views import View
 from django.shortcuts import render
+from django.contrib import messages
 from core.models import *
+from openpyxl import load_workbook
+
+
+class DriversAddView(View):
+    def get(self, request):
+        return render(request, 'core/drivers_add.html')
+    
+    def post(self, request):
+        excel_file = request.FILES["excel_file"]
+        new_excel_source = ExcelSource.objects.create(
+            excel_file=excel_file,
+            created_by=request.user
+        )
+        messages.success(request, "Файл добавлен")
+
+        context = {}
+        excel_file_source = load_workbook(new_excel_source.excel_file.url[1:])
+        page = excel_file_source[excel_file_source.sheetnames[0]]
+        # drivers_to_create = []
+        created_qty = 0
+        for row in page:
+            if row[0].row == 1:
+                continue
+
+            full_name = row[0].value
+            new_driver, created = DriversName.objects.get_or_create(full_name=full_name)
+            if created:
+                created_qty += 1
+        #     new_driver = DriversName(
+        #         full_name=full_name
+        #     )
+        #     drivers_to_create.append(new_driver)
+        # DriversName.objects.bulk_create(drivers_to_create)
+        # messages.success(request, f"Добавлено {len(drivers_to_create)} водителей")
+        messages.success(request, f"Добавлено {created_qty} водителей")
+        return render(request, 'core/drivers_add.html', context)
 
 
 class GetDriversListView(View):

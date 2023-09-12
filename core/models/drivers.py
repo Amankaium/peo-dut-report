@@ -6,3 +6,6 @@ class DriversName(models.Model):
 
     class Meta:
         verbose_name = 'Ф.И.О'
+    
+    def __str__(self):
+        return self.full_name

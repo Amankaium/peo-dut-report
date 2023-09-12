@@ -13,8 +13,18 @@
         <a href="{% url 'drivers-list' %}">Водители</a> |
         <a href="{% url 'transports-list' %}">Машины</a> |
         <a href="{% url 'cards-list' %}">Карты</a> |
-        <a href="{% url 'stations-list' %}">АЗС</a>
+        <a href="{% url 'stations-list' %}">АЗС</a> |
+        <a href="{% url 'drivers-add' %}">Добавить водителей</a>
+
     </nav>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
   
     {% block content %}
 

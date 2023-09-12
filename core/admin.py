@@ -24,3 +24,4 @@ class CardOperationAdmin(admin.ModelAdmin):
         'sum_som',
     ]    
 
+admin.site.register(ExcelSource)
