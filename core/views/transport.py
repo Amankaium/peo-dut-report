@@ -9,7 +9,7 @@ from django.views import View
 from django.shortcuts import render
 from core.models import *
 
-class TransportListView(View):
+class TransportInfoView(View):
     def get(self,request, *args, **kwargs):
         id = kwargs["pk"]
         context = {}

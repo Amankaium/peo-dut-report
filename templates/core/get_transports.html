@@ -5,7 +5,9 @@
 
     {% for transport in transports %}
         <div>
-            {{ transport.number }}
+            <a href="{% url 'transports-info' transport.pk %}">
+                {{ transport.number }}
+            </a>
         </div>
     {% endfor %}
 {% endblock %}
