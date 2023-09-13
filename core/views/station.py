@@ -4,6 +4,7 @@ from core.serializers import *
 from django.views import View
 from django.shortcuts import render
 
+
 class StationViewSet(ModelViewSet):
     queryset = Station.objects.all()
     serializer_class = StationSerializer
