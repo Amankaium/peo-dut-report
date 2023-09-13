@@ -32,7 +32,7 @@ class DriversAddView(View):
             if row[0].row == 1:
                 continue
 
-            full_name = row[0].value
+            full_name = row[2].value
             new_driver, created = DriversName.objects.get_or_create(full_name=full_name)
             if created:
                 created_qty += 1

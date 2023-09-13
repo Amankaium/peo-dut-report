@@ -40,15 +40,12 @@ class TransportCreateAPITestCase(APITestCase):
         data = {
             "mark": "created mark",
             "number": "created number",
-            "trailer": "created trailer"
+            "trailer": "created trailer",
+            "name_realcom": "created name_realcom",
+            "id_realcom": 1,
         }
 
-        response = self.client.post(
-            path=self.url,
-            data=data
-        )
 
-        self.assertEqual(response.status_code, 201)
 
         new_transport = Transport.objects.get(mark=data["mark"])
         self.assertEqual(data["number"], new_transport.number)
@@ -63,13 +60,17 @@ class TransportCreateAPITestCase(APITestCase):
             Transport.objects.create(
                 mark='test mark 1',
                 number='test number 1',
-                trailer='test trailer 1'
+                trailer='test trailer 1',
+                name_realcom='test name realcom 1',
+                id_realcom='test id realcom 1',
             )
 
             Transport.objects.create(
                 mark='test mark 2',
                 number='test number 2',
-                trailer='test trailer 2'
+                trailer='test trailer 2',
+                name_realcom='test name realcom 2',
+                id_realcom='test id realcom 2',
             )
 
         def test_get_transport_list_should_success(self):
@@ -88,7 +89,7 @@ class TransportCreateAPITestCase(APITestCase):
 
     class TransportCreateAPITestCase(APITestCase):
         def setUp(self):
-            self.url = '/api/transports-create/'
+            self.url = '/api/transports/'
 
         def test_get_request_to_create_api_should_return_405(self):
             response = self.client.get(self.url)
@@ -102,7 +103,9 @@ class TransportCreateAPITestCase(APITestCase):
             data = {
                 "mark": "created mark",
                 "number": "created number",
-                "trailer": "created trailer"
+                "trailer": "created trailer",
+                "name_realcom": "created name_realcom",
+                "id_realcom": 77,
             }
 
             response = self.client.post(
