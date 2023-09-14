@@ -91,3 +91,11 @@ class TransportCreateAPIView(APIView):
             data=serializer.errors,
             status=400
         )
+
+class TransportRealcomView(View):
+    def get(self, request):
+        context = {}
+        realcoms = Transport.objects.all()
+        context['realcoms'] = realcoms
+        return render(request, "core/id-realcom-list.html", context)
+
