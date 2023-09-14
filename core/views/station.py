@@ -32,6 +32,7 @@ class StationAddView(View):
         messages.success(request, f"Добавлено {created_qty} AЗС")
         return render(request, 'core/stations_add.html', context)
 
+
 class StationViewSet(ModelViewSet):
     queryset = Station.objects.all()
     serializer_class = StationSerializer
