@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h2>Список id_realcom Водителей</h2>
+    {% for driver in drivers %}
+        <br>
+        <div>
+            ФИО:
+            {{ driver.full_name }}
+        </div>
+        <div>
+            ID_Realcom:
+            {{ driver.id_realcom }}
+        </div>
+        <br>
+    {% endfor %}
+{% endblock %}
