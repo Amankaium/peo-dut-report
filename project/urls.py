@@ -40,6 +40,9 @@ operation_router.register(r'operation-types', OperationTypeViewSet, basename='op
 card_operation_router = DefaultRouter()
 card_operation_router.register('card-operations', CardOperationViewSet, basename='card_operation')
 
+delta_report_router = DefaultRouter()
+delta_report_router.register('delta-reports', DeltaReportViewSet, basename='delta_report')
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('transports/', TransportListAPIView.as_view(), name='transports'),
@@ -72,6 +75,7 @@ urlpatterns = [
     path('api/', include(report_router.urls)),
     path('api/', include(operation_router.urls)),
     path('api/', include(card_operation_router.urls)),
+    path('api/', include(delta_report_router.urls)),
     path('', include('core.urls')),
 
 ]
