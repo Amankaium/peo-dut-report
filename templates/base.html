@@ -1,10 +1,14 @@
 <!DOCTYPE html>
+{% load static %}
+{% load django_bootstrap5 %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ПЭО Дут Отчёт</title>
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
 
 </head>
 <body>
@@ -17,6 +21,10 @@
         <a href="{% url 'stations-list' %}">АЗС</a> |
         <a href="{% url 'drivers-add' %}">Добавить водителей |
         <a href="{% url 'stations-add' %}">Добавить АЗС</a> |
+        <a href="{% url 'cards-add' %}">Добавить карты</a> |
+        <a href="{% url 'stations-list' %}">АЗС</a> |
+        <a href="{% url 'drivers-add' %}">Добавить водителей</a> |
+        <a href="{% url 'stations-add' %}">Добавить АЗС</a>
         <a href="{% url 'transport-add' %}">Добавить ТС</a>
     </nav>
 

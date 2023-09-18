@@ -25,8 +25,14 @@ class TransportAddView(View):
         for row in page:
             if row[0].row == 1:
                 continue
+            mark = row[0].value
+            number = row[1].value
             name_realcom = row[2].value
-            new_transport, created = Transport.objects.get_or_create(name_realcom=name_realcom)
+            new_transport, created = Transport.objects.get_or_create(
+                mark=mark,
+                number=number,
+                name_realcom=name_realcom,
+            )
             if created:
                 created_qty += 1
         messages.success(request, f'Добавлено {created_qty} транспортов')

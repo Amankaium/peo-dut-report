@@ -36,7 +36,6 @@ class CardAddView(View):
         return render(request, 'core/cards_add.html', context)
 
 
-
 class CardListCreateAPIView(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer

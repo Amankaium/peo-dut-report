@@ -1,10 +1,16 @@
-{% extends 'base.html' %}
-
-{% block content %}
-    <h1>Получить данные водителей</h1>
-    {% for driver in drivers %}
-    <div>
-        {{ driver.full_name }}
-    </div>
-{% endfor %}
-{% endblock %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Drivers List</title>
+</head>
+<body>
+    <h1>Drivers List</h1>
+    <ul>
+        {% for driver in drivers %}
+            <li>
+                <a href="{% url 'driver-detail' driver.pk %}">{{ driver.full_name }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
