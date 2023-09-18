@@ -20,14 +20,15 @@
         <a href="{% url 'cards-add' %}">Добавить карты</a> |
         <a href="{% url 'stations-list' %}">АЗС</a> |
         <a href="{% url 'drivers-add' %}">Добавить водителей</a> |
-        <a href="{% url 'stations-add' %}">Добавить АЗС</a>
-        <a href="{% url 'transport-add' %}">Добавить ТС</a>
+        <a href="{% url 'stations-add' %}">Добавить АЗС</a> |
+        <a href="{% url 'transport-add' %}">Добавить ТС</a> |
+        <a href="{% url 'delta-reports-add' %}">Добавить отчёты об отклонениях</a> |
     </nav>
 
     {% if messages %}
         <ul class="messages">
             {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
             {% endfor %}
         </ul>
     {% endif %}
