@@ -49,7 +49,7 @@ class DeltaReportAdmin(admin.ModelAdmin):
         'end_balance',
         'end_level',
         'end_mech_balance',
-        'difference'
+        'difference',
         'deficiency',
         'surplus',
         'total_fuel_drained',
