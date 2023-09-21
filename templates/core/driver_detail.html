@@ -2,5 +2,11 @@
 
 {% block content %}
     <h1>Информация о водителе</h1>
-    <h2>Ф.И.О: {{ driver.full_name }}</h2>
+
+    {% for driver in drivers %}
+        <div>
+            {{ driver.full_name }}
+        </div>
+    {% endfor %}
 {% endblock %}
+
