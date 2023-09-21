@@ -15,13 +15,13 @@
     <nav>
         <a href="/">Главная</a> |
         <a href="{% url 'drivers-list' %}">Водители</a> |
+        <a href="{% url 'drivers-add' %}">Добавить водителей</a> |
         <a href="{% url 'transports-list' %}">Машины</a> |
+        <a href="{% url 'transport-add' %}">Добавить ТС</a> |
         <a href="{% url 'cards-list' %}">Карты</a> |
         <a href="{% url 'cards-add' %}">Добавить карты</a> |
         <a href="{% url 'stations-list' %}">АЗС</a> |
-        <a href="{% url 'drivers-add' %}">Добавить водителей</a> |
         <a href="{% url 'stations-add' %}">Добавить АЗС</a> |
-        <a href="{% url 'transport-add' %}">Добавить ТС</a>
     </nav>
 
     {% if messages %}
