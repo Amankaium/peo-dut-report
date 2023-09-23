@@ -1,3 +1,6 @@
+from core.serializers import *
+from core.models import DeltaReport
+from rest_framework.viewsets import ModelViewSet
 from django.shortcuts import render
 from django.views import View
 from core.models import DeltaReport, Transport
@@ -14,3 +17,8 @@ class DeltaReportListView(View):
         transports = Transport.objects.all()
         context = {'delta_reports': delta_reports, 'transports': transports}
         return render(request, 'core/delta_report.html', context)
+
+class DeltaReportViewSet(ModelViewSet):
+    queryset = DeltaReport.objects.all()
+    serializer_class = DeltaReportSerializer
+

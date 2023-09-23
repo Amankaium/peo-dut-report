@@ -9,6 +9,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from core.models import *
 from openpyxl import load_workbook
+from django.http import Http404
 
 
 class DriversAddView(View):
@@ -83,3 +84,16 @@ class DriverDetailAPIView(APIView):
         report = DriversName.objects.get(id=id)
         serializer = DriverSerializer(instance=report)
         return Response(serializer.data)
+
+
+class DriverDetailView(View):
+    template_name = 'core/driver_detail.html'  # Create this template
+
+    def get(self, request, pk):
+        try:
+            driver = DriversName.objects.get(pk=pk)
+        except DriversName.DoesNotExist:
+            raise Http404("Driver does not exist")
+
+        context = {'driver': driver}
+        return render(request, self.template_name, context)
