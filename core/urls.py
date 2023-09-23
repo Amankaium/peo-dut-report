@@ -15,4 +15,5 @@ urlpatterns = [
     path('stations-add/', StationAddView.as_view(), name='stations-add'),
     path('transport-add/', TransportAddView.as_view(), name='transport-add'),
     path('cards-add/', CardAddView.as_view(), name='cards-add'),
+    path('delta-reports/', DeltaReportListView.as_view(), name='delta-reports')
 ]
