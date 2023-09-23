@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Список DeltaReport</h1>
+<form method="GET">
+  <label for="transport">Выберите ТС:</label>
+  <select name="transport" id="transport">
+    <option value="">Все</option>
+    {% for transport in transports %}
+    <option value="{{ transport.id }}">{{ transport.name_realcom }}</option>
+    {% endfor %}
+  </select>
+  <label for="date">Выберите дату:</label>
+  <input type="date" name="date" id="date">
+  <button type="submit">Фильтровать</button>
+</form>
+<ul>
+  {% for delta_report in delta_reports %}
+  <li>
+    {{ delta_report_date }} - {{ delta_report.description }}
+  </li>
+  {% endfor %}
+</ul>
+{% endblock %}

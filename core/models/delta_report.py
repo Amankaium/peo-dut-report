@@ -1,4 +1,13 @@
 from django.db import models
+from core.models import Transport
+
+class DeltaReport(models.Model):
+    date = models.DateField()
+    description = models.TextField()
+    transport = models.ForeignKey(Transport,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.description
 
 class DeltaReport(models.Model):
     vehicle_name = models.CharField(max_length=20, verbose_name="Наименование ТС")
@@ -25,4 +34,5 @@ class DeltaReport(models.Model):
     deficiency = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Недостача")
     surplus = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Излишек")
     total_fuel_drained = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Всего топлива слито")
+
 
