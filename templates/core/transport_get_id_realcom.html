@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Получить список id_realcom транспорта</h1>
+
+    {% for transport in transports %}
+        <div>
+            <a href="{% url 'transport-id-realcom-get' %}">
+                {{ transport.id_realcom }}
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}

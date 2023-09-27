@@ -97,3 +97,4 @@ class DriverDetailView(View):
 
         context = {'driver': driver}
         return render(request, self.template_name, context)
+

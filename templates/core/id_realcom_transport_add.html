@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Добавить id-realcom транспорта c excel-файла</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <input type="file" name="excel_file">
+        </p>
+        <button>Сохранить</button>
+    </form>
+
+{% endblock %}
