@@ -1,5 +1,7 @@
 from core.serializers import *
 from core.models import CardOperation
+from core.models import Station
+from core.filters import CardOperationFilter
 from rest_framework.viewsets import ModelViewSet
 from django.views import View
 from django.shortcuts import render
@@ -9,7 +11,7 @@ from openpyxl import load_workbook
 
 class CardOperationAddView(View):
     def get(self, request):
-        return render(request, 'core/card_operations_add.html')
+        return render(request, 'core/cards_add.html')
 
     def post(self, request):
         excel_file = request.FILES["excel_file"]
@@ -53,8 +55,22 @@ class CardOperationAddView(View):
             if created:
                 created_qty += 1
         messages.success(request, f"Добавлено {created_qty} операции по картам")
-        return render(request, 'core/card_operations_add.html', context)
+        return render(request, 'core/cards_add.html', context)
+
+    def card_operation_list(request):
+        queryset = CardOperation.objects.all()
+        card_operation_filter = CardOperationFilter(request.GET, queryset=queryset)
+
+        return render(request, 'cards_add.html', {'filter': card_operation_filter})
+
+    def card_operation_add(request):
+        stations = Station.objects.all()
+        card_operation_filter = CardOperationFilter(request.GET, queryset=CardOperation.objects.all())
+        return render(request, 'core/cards_add.html', {'stations': stations, 'test': 'Тест', 'filter': card_operation_filter})
+
 
 class CardOperationViewSet(ModelViewSet):
     queryset = CardOperation.objects.all()
     serializer_class = CardOperationSerializer
+
+
