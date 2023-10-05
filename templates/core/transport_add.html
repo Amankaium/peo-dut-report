@@ -3,11 +3,32 @@
 {% block content %}
     <h1>Добавить трансторты с excel-файла</h1>
     <form method="POST" enctype="multipart/form-data">
-    {% csrf_token %}
-    <p>
-        <input type="file" name="excel_file">
-    </p>
+        {% csrf_token %}
+        <p>
+            <input type="file" name="excel_file">
+        </p>
         <button>Сохранить</button>
     </form>
+
     <h1>{{ test }}</h1>
+
+    <form method="GET" action="{% url 'transport-list' %}">
+        <label for="mark">Марка:</label>
+        <input type="text" name="mark" id="mark" placeholder="Введите марку">
+
+        <label for="number">Номер:</label>
+        <input type="text" name="number" id="number" placeholder="Введите номер">
+
+        <label for="trailer">Прицеп:</label>
+        <input type="text" name="trailer" id="trailer" placeholder="Прицеп">
+
+        <label for="id_realcom">ID Realcom:</label>
+        <input type="text" name="id_realcom" id="id_realcom" placeholder="Введите ID Realcom">
+
+        <label for="name_realcom">Имя Realcom:</label>
+        <input type="text" name="name_realcom" id="name_realcom" placeholder="Введите имя Realcom">
+
+
+        <button type="submit">Применить фильтр</button>
+    </form>
 {% endblock %}

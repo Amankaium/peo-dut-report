@@ -12,4 +12,23 @@
 
     <h1>{{ test }}</h1>
 
+    <form method="GET" action="{% url 'card-operation-list' %}">
+        <label for="date">Дата:</label>
+        <input type="date" name="date" id="date">
+
+        <label for="station">АЗС:</label>
+        <input type="text" name="station" id="station" placeholder="Введите АЗС">
+
+        <label for="card">Карта:</label>
+        <input type="text" name="card" id="card" placeholder="Введите карту">
+
+        <label for="fuel_type">Тип топлива:</label>
+        <input type="text" name="fuel_type" id="fuel_type" placeholder="Введите тип топлива">
+
+        <label for="operation_type">Тип операции:</label>
+        <input type="text" name="operation_type" id="operation_type" placeholder="Введите тип операции">
+
+
+        <button type="submit">Применить фильтр</button>
+    </form>
 {% endblock %}

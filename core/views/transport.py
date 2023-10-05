@@ -4,16 +4,19 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.generics import ListAPIView, RetrieveAPIView, CreateAPIView
 from rest_framework import generics
 from core.serializers import *
-from django.shortcuts import render
 from django.views import View
 from django.shortcuts import render
 from core.models import *
 from openpyxl import load_workbook
 from django.contrib import messages
+from core.filters import TransportFilter
+from core.serializers import TransportSerializer
+
 
 class TransportAddView(View):
     def get(self, request):
         return render(request, 'core/transport_add.html')
+
     def post(self, request):
         excel_file = request.FILES['excel_file']
         new_excel_source = ExcelSource.objects.create(excel_file=excel_file, created_by=request.user)
@@ -38,6 +41,13 @@ class TransportAddView(View):
         messages.success(request, f'Добавлено {created_qty} транспортов')
         return render(request, 'core/transport_add.html', context)
 
+    def transport_list(request):
+        queryset = Transport.objects.all()
+        transport_filter = TransportFilter(request.GET, queryset=queryset)
+
+        return render(request, 'transport_add.html', {'filter': transport_filter})
+
+
 class TransportInfoView(View):
     def get(self,request, *args, **kwargs):
         id = kwargs["pk"]
@@ -46,17 +56,19 @@ class TransportInfoView(View):
         return render(request, 'core/transports.html', context)
       
 
-
 class GetTransportView(View):
     template_name = 'core/get_transports.html'
+
     def get(self, request):
         context = {}
         context['transports'] = Transport.objects.all()
         return render(request, self.template_name, context)
 
+
 class TransportViewSet(ModelViewSet):
     queryset = Transport.objects.all()
     serializer_class = TransportSerializer
+
 
 class TransportListAPIView(APIView):
     def get(self, request):
@@ -67,6 +79,7 @@ class TransportListAPIView(APIView):
         )
         data = serializer.data
         return Response(data)
+
 
 class TransportDetailAPIView(APIView):
     def get(self, request, *args, **kwargs):
