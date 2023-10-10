@@ -6,6 +6,7 @@
         {% csrf_token %}
         <button>Получить</button>
     </form>
+    <h2>{{ value }}</h2>
     {% if data %}
         <div>
             {{ data }}
