@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Получить список id_realcom водителей</h1>
+
+    {% for driver in drivers %}
+        <div>
+            <a href="{% url 'id-realcom-get-list-drivers' %}">
+                {{ driver.id_realcom }}
+            </a>
+        </div>
+    {% endfor %}
+{% endblock %}
+
