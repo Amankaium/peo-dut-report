@@ -35,6 +35,7 @@ class CardAddView(View):
         messages.success(request, f"Добавлено {created_qty} карт(ы)")
         return render(request, 'core/cards_add.html', context)
 
+
 class CardListCreateAPIView(generics.ListCreateAPIView):
     queryset = Card.objects.all()
     serializer_class = CardSerializer

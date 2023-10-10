@@ -14,6 +14,7 @@ urlpatterns = [
     path('stations-list/', StationListView.as_view(), name='stations-list'),
     path('drivers-add/', DriversAddView.as_view(), name='drivers-add'),
     path('stations-add/', StationAddView.as_view(), name='stations-add'),
+    path('cards-add/', CardAddView.as_view(), name='cards-add'),
     path('transport-add/', TransportAddView.as_view(), name='transport-add'),
     path('cards-add/', CardAddView.as_view(), name='cards-add'),
 ]
