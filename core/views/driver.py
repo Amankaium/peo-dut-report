@@ -98,3 +98,36 @@ class DriverDetailView(View):
         context = {'driver': driver}
         return render(request, self.template_name, context)
 
+
+class DriversIdRealcomView(View):
+    def get(self, request):
+        return render(request, 'core/id_realcom_drivers_add.html')
+    def post(self, request):
+        excel_file = request.FILES["excel_file"]
+        new_excel_source = ExcelSource.objects.create(
+            excel_file=excel_file,
+            created_by=request.user
+        )
+        messages.success(request, "Файл добавлен")
+
+        context = {}
+        excel_file_source = load_workbook(new_excel_source.excel_file.url[1:])
+        page = excel_file_source[excel_file_source.sheetnames[0]]
+        created_qty = 0
+        for row in page:
+            if row[0].row == 1:
+                continue
+            id_realcom = row[0].value
+            new_id_realcom, created = DriversName.objects.get_or_create(id_realcom=id_realcom)
+            if created:
+                created_qty += 1
+            print(f'id_realcom: {id_realcom}, created: {created}')
+        messages.success(request, f"Добавлено {created_qty} записей")
+        return render(request, 'core/id_realcom_drivers_add.html', context)
+
+class DriversRealcomView(View):
+    def get(self, request):
+        context = {}
+        drivers = DriversName.objects.all()
+        context['drivers'] = drivers
+        return render(request, 'core/id_realcom_drivers_list.html', context)

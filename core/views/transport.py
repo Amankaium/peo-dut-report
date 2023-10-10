@@ -125,4 +125,3 @@ class TransportIdRealcomGetView(View):
         context['transports'] = transports
         return render(request, 'core/transport_get_id_realcom.html', context)
 
-
