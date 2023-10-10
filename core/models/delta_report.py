@@ -25,4 +25,3 @@ class DeltaReport(models.Model):
     deficiency = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Недостача")
     surplus = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Излишек")
     total_fuel_drained = models.DecimalField(max_digits=10, decimal_places=2, verbose_name="Всего топлива слито")
-
