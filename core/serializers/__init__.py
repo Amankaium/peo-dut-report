@@ -7,3 +7,4 @@ from .station import *
 from .transport import *
 from .user import *
 from .card_operation import *
+from .delta_report import *
