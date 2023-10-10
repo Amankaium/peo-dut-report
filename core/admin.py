@@ -29,6 +29,7 @@ admin.site.register(ExcelSource)
 @admin.register(DeltaReport)
 class DeltaReportAdmin(admin.ModelAdmin):
     list_display = [
+        'transport',
         'vehicle_name',
         'period_start',
         'period_end',
@@ -51,7 +52,7 @@ class DeltaReportAdmin(admin.ModelAdmin):
         'end_mech_balance',
         'difference',
         'deficiency',
-        'surplus',
         'total_fuel_drained',
+        'note'
     ]
 

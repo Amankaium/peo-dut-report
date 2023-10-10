@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Добавить отчёты об отклонениях c excel-файла</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>
+            <input type="file" name="excel_file">
+        </p>
+        <button>Сохранить</button>
+    </form>
+
+    <h1>{{ test }}</h1>
+
+{% endblock %}
