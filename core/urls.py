@@ -16,8 +16,9 @@ urlpatterns = [
     path('stations-add/', StationAddView.as_view(), name='stations-add'),
     path('transport-add/', TransportAddView.as_view(), name='transport-add'),
     path('cards-add/', CardAddView.as_view(), name='cards-add'),
+    path('transport-id-realcom-add/', TransportIdRealcomView.as_view(), name='transport-id-realcom-add'),
+    path('transport-id-realcom-get/', TransportIdRealcomGetView.as_view(), name='transport-id-realcom-get'),
     path('id-realcom-add-drivers/', DriversIdRealcomView.as_view(), name='id-realcom-add-drivers'),
     path('id-realcom-get-list-drivers/', DriversRealcomView.as_view(), name='id-realcom-get-list-drivers'),
     path('delta-reports-add/', DeltaReportAddView.as_view(), name='delta-reports-add'),
 ]
-

@@ -98,6 +98,7 @@ class DriverDetailView(View):
         context = {'driver': driver}
         return render(request, self.template_name, context)
 
+
 class DriversIdRealcomView(View):
     def get(self, request):
         return render(request, 'core/id_realcom_drivers_add.html')
