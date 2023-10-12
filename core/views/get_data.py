@@ -16,11 +16,12 @@ class GetDataView(View):
         context = {}
         cars = Transport.objects.all()
         data = []
+        sid = "5ae57a7b0dc301b684af7f4cb9082cbd"
         for car in cars:
             response = requests.post(
-                url='http://wialon.realcom.kg/wialon/ajax.html?svc=report/exec_report&sid=5eecc4a145ca6ca2a3a17c4e65b96f49',
+                url=f'http://wialon.realcom.kg/wialon/ajax.html?svc=report/exec_report&sid={sid}',
                 data={
-                    "sid": "5eecc4a145ca6ca2a3a17c4e65b96f49",
+                    "sid": sid,
                     "params": '{"reportResourceId":6354,"reportTemplateId":1,"reportTemplate":null,"reportObjectId":%s,"reportObjectSecId":0,"interval":{"flags":16777216,"from":1688204160,"to":1690859159},"remoteExec":0}' % car.id_realcom
                 }
             )

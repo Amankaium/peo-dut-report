@@ -6,7 +6,22 @@
         {% csrf_token %}
         <button>Получить</button>
     </form>
-    <h2>{{ value }}</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Машина</th>
+                <th>Месяц</th>
+                <th>Пробег по одометру</th>
+            </tr>
+        </thead>
+            <tr>
+                <td>Daf 01KG 795AC</td>
+                <td>Август</td>
+                <td>{{ value }}</td>
+            </tr>
+        
+    </table>
+   
     {% if data %}
         <div>
             {{ data }}
