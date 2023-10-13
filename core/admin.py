@@ -3,7 +3,14 @@ from core.models import *
 
 admin.site.register(Report)
 admin.site.register(Station)
-admin.site.register(Transport)
+
+
+@admin.register(Transport)
+class TransportAdmin(admin.ModelAdmin):
+    list_display = ['id', 'id_realcom', 'name']
+    list_per_page = 300
+
+
 admin.site.register(DriversName)
 admin.site.register(Card)
 admin.site.register(OperationType)
