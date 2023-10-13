@@ -6,9 +6,21 @@
         {% csrf_token %}
         <button>Получить</button>
     </form>
-    {% if data %}
-        <div>
-            {{ data }}
-        </div>
-    {% endif %}
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Машина</th>
+                <th>Месяц</th>
+                <th>Пробег по одометру</th>
+            </tr>
+        </thead>
+            {% for car_data in cars_data %}
+                <tr>
+                    <td>{{ car_data.0.name }}</td>
+                    <td>Август</td>
+                    <td>{{ car_data.1 }}</td>
+                </tr>
+            {% endfor %}
+
+    </table>
 {% endblock %}
