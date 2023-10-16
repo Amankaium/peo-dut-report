@@ -1,8 +1,10 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Информаци по транспортам</h1>
-    <h2>Транспорт: {{ transport.number }}</h2>
+    <h2>{{ transport.name }}</h2>
+    <div>Номер: {{ transport.number }}</div>
     <div>Модель: {{ transport.mark }}</div>
     <div>Трейлер: {{ transport.trailer }}</div>
+    <div>id: {{ transport.id }}</div>
+    <div>id realcom: {{ transport.id_realcom }}</div>
 {% endblock %}

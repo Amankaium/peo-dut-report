@@ -29,6 +29,12 @@
                         <a class="nav-link" href="/">Главная</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="{% url 'delta-reports-add' %}">Excel Отчёт</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url 'admin:index' %}">Админ панель</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="{% url 'drivers-list' %}">Водители</a>
                     </li>
                     <li class="nav-item">
@@ -58,13 +64,7 @@
     </nav>
 
 <div class="container mt-4">
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-              <li>{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    {% bootstrap_messages %}
 
     {% block content %}
 

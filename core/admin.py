@@ -3,18 +3,19 @@ from core.models import *
 
 admin.site.register(Report)
 admin.site.register(Station)
+admin.site.register(DriversName)
+admin.site.register(Card)
+admin.site.register(OperationType)
+admin.site.register(FuelType)
+admin.site.register(MonthReport)
 
 
 @admin.register(Transport)
 class TransportAdmin(admin.ModelAdmin):
     list_display = ['id', 'id_realcom', 'name']
+    search_fields = ['name']
     list_per_page = 300
 
-
-admin.site.register(DriversName)
-admin.site.register(Card)
-admin.site.register(OperationType)
-admin.site.register(FuelType)
 
 @admin.register(CardOperation)
 class CardOperationAdmin(admin.ModelAdmin):
@@ -35,7 +36,10 @@ admin.site.register(ExcelSource)
 
 @admin.register(DeltaReport)
 class DeltaReportAdmin(admin.ModelAdmin):
+    list_filter = ["month_report", "transport"]
+
     list_display = [
+        'month_report',
         'transport',
         'vehicle_name',
         'period_start',

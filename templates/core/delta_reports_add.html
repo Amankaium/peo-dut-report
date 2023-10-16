@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block content %}
     <h1>Добавить отчёты об отклонениях c excel-файла</h1>
@@ -7,6 +8,7 @@
         <p>
             <input type="file" name="excel_file">
         </p>
+        {% bootstrap_form form %}
         <button>Сохранить</button>
     </form>
 

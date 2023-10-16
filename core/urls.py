@@ -3,7 +3,7 @@ from .views import *
 
 
 urlpatterns = [
-    path('', GetDataView.as_view(), name='home'),
+    path('', Home.as_view(), name='home'),
     path('drivers', GetDriversListView.as_view(), name='get-drivers'),
     path('driver/<int:pk>/', DriverDetailView.as_view(), name='driver-detail'),
     path('transport/<int:pk>/', TransportInfoView.as_view(), name='transports-info'),
@@ -21,4 +21,5 @@ urlpatterns = [
     path('id-realcom-add-drivers/', DriversIdRealcomView.as_view(), name='id-realcom-add-drivers'),
     path('id-realcom-get-list-drivers/', DriversRealcomView.as_view(), name='id-realcom-get-list-drivers'),
     path('delta-reports-add/', DeltaReportAddView.as_view(), name='delta-reports-add'),
+    path('update-delta-report/<int:id>/', DeltaReportUpdateView.as_view(), name='delta-reports-update'),
 ]

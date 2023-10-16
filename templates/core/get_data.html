@@ -1,26 +1,84 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
 {% block content %}
-    <h1>Получить данные по API</h1>
+    <h1>Отчёт за месяц</h1>
+    <form>
+        {% bootstrap_form filter.form %}
+        <button class="btn btn-lg btn-info">Применить фильтр</button>
+    </form>
+    <hr>
+    <h2>Получить данные по API</h2>
     <form method="POST">
         {% csrf_token %}
-        <button>Получить</button>
+        <p>
+            <button class="btn btn-lg btn-warning">Обновить данные с Wialon Realcom</button>
+        </p>
     </form>
     <table class="table table-bordered">
         <thead>
             <tr>
-                <th>Машина</th>
                 <th>Месяц</th>
+                <th>ТС</th>
+                <th>Наименование ТС</th>
+                <th>Начало периода</th>
+                <th>Конец периода</th>
+                <th>Факт КМ</th>
                 <th>Пробег по одометру</th>
+                <th>Пробег в поездках</th>
+                <th>Остаток на начало</th>
+                <th>Нач. уровень</th>
+                <th>Заправка ГСМ</th>
+                <th>Всего заправлено</th>
+                <th>Факт Расход топлива (литр)</th>
+                <th>Норма Расход топлива (литр)</th>
+                <th>Напр.</th>
+                <th>Ср. расход по ДУТ в поездках</th>
+                <th>Ср. расход по ДУТ (весь пробег)</th>
+                <th>По факту</th>
+                <th>Калькуляция нормы расхода</th>
+                <th>Остаток по пут.листу</th>
+                <th>Остаток на конец</th>
+                <th>Кон. уровень</th>
+                <th>Остаток кон.мех.</th>
+                <th>разница</th>
+                <th>Недостача  Излишек</th>
+                <th>Всего топлива слито</th>
+                <th>Прим-ние</th>
             </tr>
         </thead>
-            {% for car_data in cars_data %}
+            {% for o in rows %}
                 <tr>
-                    <td>{{ car_data.0.name }}</td>
-                    <td>Август</td>
-                    <td>{{ car_data.1 }}</td>
+                    <td>{{ o.month_report }}</td>
+                    <td>{{ o.transport.name }}</td>
+                    <td>{{ o.vehicle_name }}</td>
+                    <td>{{ o.period_start }}</td>
+                    <td>{{ o.period_end }}</td>
+                    <td>{{ o.fact_km }}</td>
+                    <td class="table-warning">{% if o.odometer_mileage %}{{ o.odometer_mileage }}{% endif %}</td>
+                    <td class="table-warning">{% if o.trip_mileage %}{{ o.trip_mileage }}{% endif %}</td>
+                    <td>{% if o.start_balance %}{{ o.start_balance }}{% endif %}</td>
+                    <td class="table-warning">{% if o.start_level %}{{ o.start_level }}{% endif %}</td>
+                    <td>{% if o.fueling_gsm %}{{ o.fueling_gsm }}{% endif %}</td>
+                    <td class="table-warning">{% if o.total_refueled %}{{ o.total_refueled }}{% endif %}</td>
+                    <td>{% if o.actual_fuel_consumption %}{{ o.actual_fuel_consumption }}{% endif %}</td>
+                    <td>{% if o.norm_fuel_consumption %}{{ o.norm_fuel_consumption }}{% endif %}</td>
+                    <td>{% if o.departure %}{{ o.departure }}{% endif %}</td>
+                    <td>{% if o.avg_trip_dut_consumption %}{{ o.avg_trip_dut_consumption }}{% endif %}</td>
+                    <td>{% if o.avg_dut_consumption %}{{ o.avg_dut_consumption }}{% endif %}</td>
+                    <td>{% if o.actual %}{{ o.actual }}{% endif %}</td>
+                    <td>{% if o.fuel_calculation_norm %}{{ o.fuel_calculation_norm }}{% endif %}</td>
+                    <td>{% if o.departure_balance %}{{ o.departure_balance }}{% endif %}</td>
+                    <td>{% if o.end_balance %}{{ o.end_balance }}{% endif %}</td>
+                    <td>{% if o.end_level %}{{ o.end_level }}{% endif %}</td>
+                    <td>{% if o.end_mech_balance %}{{ o.end_mech_balance }}{% endif %}</td>
+                    <td>{% if o.difference %}{{ o.difference }}{% endif %}</td>
+                    <td>{% if o.deficiency %}{{ o.deficiency }}{% endif %}</td>
+                    <td>{% if o.total_fuel_drained %}{{ o.total_fuel_drained }}{% endif %}</td>
+                    <td>{% if o.note %}{{ o.note }}{% endif %}</td>
                 </tr>
             {% endfor %}
-
     </table>
+    <hr>
+    
 {% endblock %}

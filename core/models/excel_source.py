@@ -12,5 +12,5 @@ class ExcelSource(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.created_by.username
+        return f"{self.created_by.username} - {self.created_at}"
 

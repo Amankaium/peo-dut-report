@@ -6,7 +6,7 @@
     {% for transport in transports %}
         <div>
             <a href="{% url 'transports-info' transport.pk %}">
-                {{ transport.number }}
+                {{ transport.name }}
             </a>
         </div>
     {% endfor %}
