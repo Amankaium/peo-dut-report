@@ -5,5 +5,8 @@ from core.models import MonthReport
 
 class Home(View):
     def get(self, request):
-        id = MonthReport.objects.order_by('year', 'month').last().id
-        return redirect('delta-reports-update', id=id)
+        month_reports = MonthReport.objects.all()
+        if month_reports:
+            id = month_reports.last().id
+            return redirect('delta-reports-update', id=id)
+        return redirect('delta-reports-add')
