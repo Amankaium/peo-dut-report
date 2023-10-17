@@ -133,12 +133,7 @@ class DeltaReportUpdateView(View):
     def post(self, request, *args, **kwargs):
         context = self.get_context()
         sid = "f55c3c5ba189e0330b91ffe2bd20f71d"
-
-        car_numbers = ["Daf 01KG 1694M", "Daf 01KG 900AD"]
-        delta_reports = DeltaReport.objects.filter(transport__name__in=car_numbers, month_report=context["month_report"])
-        print(len(delta_reports))
-        for obj in context["delta_reports"][:2]:
-        # for obj in delta_reports:
+        for obj in context["delta_reports"]:
             period_start = int(obj.period_start.timestamp())
             period_end = int(obj.period_end.timestamp())
             id_realcom = obj.transport.id_realcom

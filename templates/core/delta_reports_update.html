@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
+{% block extra_header %}
+    <link href="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-1.13.6/af-2.6.0/b-2.4.2/b-html5-2.4.2/date-1.5.1/sl-1.7.0/datatables.min.css" rel="stylesheet">
+    <script src="https://cdn.datatables.net/v/bs5/jq-3.7.0/jszip-3.10.1/dt-1.13.6/af-2.6.0/b-2.4.2/b-html5-2.4.2/date-1.5.1/sl-1.7.0/datatables.min.js"></script>    
+{% endblock %}
+
 {% block content %}
     <ul class="nav nav-tabs">
         {% for mr in month_reports %}
@@ -26,7 +31,7 @@
         </p>
     </form>
     <div class="table-responsive">
-        <table class="table table-bordered">
+        <table class="table table-bordered my-datatable">
             <thead>
                 <tr>
                     <th>Месяц</th>
@@ -63,34 +68,44 @@
                         <td>{{ o.month_report }}</td>
                         <td>{{ o.transport.name }}</td>
                         <td>{{ o.vehicle_name }}</td>
-                        <td>{{ o.period_start }}</td>
-                        <td>{{ o.period_end }}</td>
-                        <td>{{ o.fact_km }}</td>
-                        <td class="table-warning">{% if o.odometer_mileage %}{{ o.odometer_mileage }}{% endif %}</td>
-                        <td class="table-warning">{% if o.trip_mileage %}{{ o.trip_mileage }}{% endif %}</td>
-                        <td>{% if o.start_balance %}{{ o.start_balance }}{% endif %}</td>
-                        <td class="table-warning">{% if o.start_level %}{{ o.start_level }}{% endif %}</td>
-                        <td>{% if o.fueling_gsm %}{{ o.fueling_gsm }}{% endif %}</td>
-                        <td class="table-warning">{% if o.total_refueled %}{{ o.total_refueled }}{% endif %}</td>
-                        <td>{% if o.actual_fuel_consumption %}{{ o.actual_fuel_consumption }}{% endif %}</td>
-                        <td>{% if o.norm_fuel_consumption %}{{ o.norm_fuel_consumption }}{% endif %}</td>
+                        <td>{{ o.period_start|date:"Y F d H:i" }}</td>
+                        <td>{{ o.period_end|date:"Y F d H:i" }}</td>
+                        <td>{{ o.fact_km|floatformat:".2f" }}</td>
+                        <td class="table-warning">{% if o.odometer_mileage %}{{ o.odometer_mileage|floatformat:".2f" }}{% endif %}</td>
+                        <td class="table-warning">{% if o.trip_mileage %}{{ o.trip_mileage|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.start_balance %}{{ o.start_balance|floatformat:".2f" }}{% endif %}</td>
+                        <td class="table-warning">{% if o.start_level %}{{ o.start_level|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.fueling_gsm %}{{ o.fueling_gsm|floatformat:".2f" }}{% endif %}</td>
+                        <td class="table-warning">{% if o.total_refueled %}{{ o.total_refueled|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.actual_fuel_consumption %}{{ o.actual_fuel_consumption|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.norm_fuel_consumption %}{{ o.norm_fuel_consumption|floatformat:".2f" }}{% endif %}</td>
                         <td>{% if o.departure %}{{ o.departure }}{% endif %}</td>
-                        <td class="table-warning">{% if o.avg_trip_dut_consumption %}{{ o.avg_trip_dut_consumption }}{% endif %}</td>
-                        <td class="table-warning">{% if o.avg_dut_consumption %}{{ o.avg_dut_consumption }}{% endif %}</td>
-                        <td>{% if o.actual %}{{ o.actual }}{% endif %}</td>
-                        <td>{% if o.fuel_calculation_norm %}{{ o.fuel_calculation_norm }}{% endif %}</td>
-                        <td>{% if o.departure_balance %}{{ o.departure_balance }}{% endif %}</td>
-                        <td>{% if o.end_balance %}{{ o.end_balance }}{% endif %}</td>
-                        <td class="table-warning">{% if o.end_level %}{{ o.end_level }}{% endif %}</td>
-                        <td>{% if o.end_mech_balance %}{{ o.end_mech_balance }}{% endif %}</td>
-                        <td class="table-warning">{% if o.difference %}{{ o.difference }}{% endif %}</td>
-                        <td>{% if o.deficiency %}{{ o.deficiency }}{% endif %}</td>
-                        <td>{% if o.total_fuel_drained %}{{ o.total_fuel_drained }}{% endif %}</td>
+                        <td class="table-warning">{% if o.avg_trip_dut_consumption %}{{ o.avg_trip_dut_consumption|floatformat:".2f" }}{% endif %}</td>
+                        <td class="table-warning">{% if o.avg_dut_consumption %}{{ o.avg_dut_consumption|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.actual %}{{ o.actual|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.fuel_calculation_norm %}{{ o.fuel_calculation_norm|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.departure_balance %}{{ o.departure_balance|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.end_balance %}{{ o.end_balance|floatformat:".2f" }}{% endif %}</td>
+                        <td class="table-warning">{% if o.end_level %}{{ o.end_level|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.end_mech_balance %}{{ o.end_mech_balance|floatformat:".2f" }}{% endif %}</td>
+                        <td class="table-warning">{% if o.difference %}{{ o.difference|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.deficiency %}{{ o.deficiency|floatformat:".2f" }}{% endif %}</td>
+                        <td>{% if o.total_fuel_drained %}{{ o.total_fuel_drained|floatformat:".2f" }}{% endif %}</td>
                         <td>{% if o.note %}{{ o.note }}{% endif %}</td>
                     </tr>
                 {% endfor %}
         </table>
     </div>
-    <hr>
-    {{ data }}
+    <script>
+        $(document).ready(function() {
+            var table = $('.my-datatable').DataTable( {
+                dom: '<"row"<"col"B><"col"f>>',
+                lengthChange: false,
+                buttons: ['excel']
+            });
+
+            table.buttons().container()
+                .appendTo( '.my-datatable .col-sm-6:eq(0)' );
+        } );
+    </script>
 {% endblock %}
