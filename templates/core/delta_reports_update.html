@@ -99,8 +99,9 @@
     <script>
         $(document).ready(function() {
             var table = $('.my-datatable').DataTable( {
-                dom: '<"row"<"col"B><"col"f>>',
-                lengthChange: false,
+                dom: '<"row"<"col"B><"col"i><"col"f>>',
+                paging: false,
+                // lengthChange: false,
                 buttons: ['excel']
             });
 

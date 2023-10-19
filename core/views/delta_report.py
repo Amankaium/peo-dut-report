@@ -52,12 +52,17 @@ class DeltaReportAddView(CreateView):
 
             car_name = row[1].value
 
+            if not Transport.objects.filter(name=car_name).exists():
+                print(car_name)
+                continue
             if car_name == "нет ДУТ":
                 continue
             if car_name is None or car_name in ['', ' ']:
                 break
 
-            month_names.index("Июль")
+            car_object, car_created = Transport.objects.get_or_create(
+                name=car_name
+            )
 
             date_format = "%Y %B %d %H:%M"
             period_start = datetime.strptime(row[2].value, date_format)
@@ -77,10 +82,6 @@ class DeltaReportAddView(CreateView):
             difference = row[22].value
             deficiency = row[23].value
             note = row[25].value
-
-            car_object, car_created = Transport.objects.get_or_create(
-                name=car_name
-            )
 
             new_delta_report = DeltaReport(
                 month_report=new_month_report,
@@ -132,7 +133,7 @@ class DeltaReportUpdateView(View):
 
     def post(self, request, *args, **kwargs):
         context = self.get_context()
-        sid = "f55c3c5ba189e0330b91ffe2bd20f71d"
+        sid = "6840c187a3b3320e16b79343f1b55dbd"
         for obj in context["delta_reports"]:
             period_start = int(obj.period_start.timestamp())
             period_end = int(obj.period_end.timestamp())
