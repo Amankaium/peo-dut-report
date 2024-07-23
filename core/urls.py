@@ -2,6 +2,7 @@ from django.urls import path
 from .views import *
 
 
+
 urlpatterns = [
     path('', Home.as_view(), name='home'),
     path('drivers', GetDriversListView.as_view(), name='get-drivers'),
@@ -22,4 +23,5 @@ urlpatterns = [
     path('id-realcom-get-list-drivers/', DriversRealcomView.as_view(), name='id-realcom-get-list-drivers'),
     path('delta-reports-add/', DeltaReportAddView.as_view(), name='delta-reports-add'),
     path('update-delta-report/<int:id>/', DeltaReportUpdateView.as_view(), name='delta-reports-update'),
+    path('ktg-parser/', KTGParserView.as_view(), name='ktg-parser'),
 ]

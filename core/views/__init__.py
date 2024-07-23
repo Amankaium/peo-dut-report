@@ -10,3 +10,4 @@ from .user import *
 from .station import *
 from .card_operation import *
 from .delta_report import *
+from .ktg_parser import *
